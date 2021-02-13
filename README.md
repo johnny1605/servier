@@ -1,24 +1,24 @@
-Pour récupérer le repository:
-- git clone https://github.com/johnny1605/servier.git
+- Pour récupérer le repository:
+	- git clone https://github.com/johnny1605/servier.git
 
 
 
-Création de l'image docker "servier":
-- docker build . -t servier
+- Création de l'image docker "servier":
+	- docker build . -t servier
 
 
 
-Lancer le container:
-- docker run -p 8891:8891 -it --entrypoint /bin/bash servier
+- Lancer le container:
+	- docker run -p 8891:8891 -it --entrypoint /bin/bash servier
 
 
 
-Lancer la Web Application:
-- python3 launcher.py
+- Lancer la Web Application:
+	- python3 launcher.py
 
 
 
-Dans un navigateur (Google chrome de préférence) cliquer sur l'adresse suivante : http://localhost:8891/ 
+Dans un navigateur (Google chrome de préférence) coller sur l'adresse suivante : http://localhost:8891/ 
 
 
 
