@@ -16,9 +16,9 @@ back_server_url = 'http://localhost:8892/'
 
 dir_ = os.getcwd()
 
-UPLOAD_FOLDER = 'back_end/Data_input/'
+UPLOAD_FOLDER = 'back_end/Data_input'
 UPLOAD_FOLDER = os.path.join(dir_,UPLOAD_FOLDER)
-print('path : ', UPLOAD_FOLDER)
+
 ALLOWED_EXTENSIONS = set(['csv'])
 
 app = Flask(__name__)
@@ -67,18 +67,10 @@ def predict(back_route, return_page):
             pred = result["pred"]
             
         return render_template(return_page, pred=pred, prediction_choice=prediction_choice.capitalize())
-        #return render_template(return_page, filename=filename, pred=pred, prediction_choice=prediction_choice.capitalize())
-
 
 @app.route('/')
 @app.route('/index')
 def main():
-# Delete uploaded files older than 3 hours:
-    ctime = time.time()
-    for file in os.listdir(app.config['UPLOAD_FOLDER']):
-        mtime = os.path.getmtime(app.config['UPLOAD_FOLDER'] + file)
-        if ( (ctime-mtime) > 3600*3 ):
-            os.remove(app.config['UPLOAD_FOLDER'] + file)
     return render_template('index.html')
 
 @app.route('/login')

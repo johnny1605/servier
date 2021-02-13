@@ -8,10 +8,6 @@ import pandas as pd
 import numpy as np
 from feature_extractor import *
 from rdkit.Chem import DataStructs
-from keras import backend as K
-import tensorflow as tf
-from tensorflow.python.keras.backend import set_session
-from tensorflow.python.keras.models import load_model
 
 
 
@@ -44,16 +40,6 @@ def loading_model():
     model_servier_path = 'back_end/Model/servier.h5'
     model_servier_path = os.path.join(dir_,model_servier_path)
     global model
-    '''
-    session = tf.Session(graph=tf.Graph())
-    with session.graph.as_default():
-        K.set_session(session)
-        model = K.models.load_model(model_servier_path)
-    '''
-
-    # load the pre-trained model
-    #global graph
-    #graph = tf.get_default_graph()
     model = load_model(model_servier_path)
 
     print('Finished loading deep models')
@@ -67,29 +53,6 @@ def model_choice(prediction_choix):
 
     return model
 
-
-'''
-@app.route('/make_prediction_smiles', methods=["POST"])
-def make_prediction_smiles(model, path_smiles):
-    print('in make prediction')
-    result = {"success": False}
-    print('result : ',result)
-    if request.method == "POST":
-        
-        #if request.files.get("filename"):
-            #filename = request.files['filename'].read()
-            #filename = filename.decode()
-        
-        print('before pred')
-        pred = model.prediction_smiles(model, path_smiles)
-                   
-    result["predictions"] = {'pred': pred}
-    result["success"] = True
-
-    print(result)
-
-    return jsonify(result)
-'''
 @app.route('/make_prediction_smiles', methods=["POST"])
 def make_prediction_smiles():
     result = {"success": False}
@@ -101,8 +64,6 @@ def make_prediction_smiles():
         smiles_prediction.iloc[0]['smiles'] = arr
         arr = np.stack(arr)
         arr = arr.reshape(1,2048,1)
-        #with graph.as_default():
-            #K.set_session(session)
         pred = model.predict_classes(arr)
         pred = float(pred)
     

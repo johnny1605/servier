@@ -14,7 +14,7 @@ dir_ = os.getcwd()
 print(dir_)
 
 #python_path = sys.path[0]
-python_path = '/usr/local/anaconda3/envs/servier/bin/python'
+python_path = '/miniconda/bin/python'
 
 
 # PATH OF FRONT SERVER
@@ -38,9 +38,3 @@ front_server_url = "http://localhost:8891"
 #chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
 #webbrowser.get(chrome_path).open(front_server_url)
 webbrowser.open(front_server_url)
-
-'''
-print("KILLED APP")
-frontProc.kill()
-backProc.kill()
-'''

@@ -15,14 +15,14 @@ RUN conda update -y conda \
 	&& conda install -c anaconda -y python=3.6 \
 	&& conda install -c conda-forge rdkit \
 	&& conda install -c conda-forge keras \
+	&& conda install -c conda-forge h5py=2.10.0 \
 	&& conda install -c conda-forge flask \
 	&& conda install -c conda-forge glob2 \
+	&& conda install -c conda-forge hdf5 \
 	&& conda install -c anaconda requests \
-	&& conda install -c anaconda hdf5 \
 	&& conda install tensorflow=2.0
 
-ADD . /app_demo/
 
-CMD run_app_cmd.sh 
+ADD app_demo /web_app/
 
-ENTRYPOINT /bin/bash
+WORKDIR web_app
