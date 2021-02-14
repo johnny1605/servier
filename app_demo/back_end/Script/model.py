@@ -1,20 +1,24 @@
 from rdkit.Chem import DataStructs
 import keras
 from keras.models import Sequential
-from keras.layers import Dense, Flatten, Conv1D, Dropout, MaxPooling1D, LSTM, Bidirectional, GRU, TimeDistributed
+from keras.layers import Dense, Embedding, Conv1D, Dropout, MaxPooling1D, LSTM, GlobalMaxPooling1D
 import PreProcessing as PP
 
 def model():
     model = Sequential()
 
-    model.add(Conv1D(64, kernel_size=(10), input_shape=(2048,1), activation='relu'))
-    model.add(MaxPooling1D(10))
-    model.add(Dropout(0.5))
-    model.add(LSTM(20))
+    model.add(Embedding(max_len, 16, input_length=max_len))
+    model.add(Conv1D(32, kernel_size=(5), activation='relu'))
+    model.add(MaxPooling1D(5))
+    #model.add(Dropout(0.8))
+    model.add(Conv1D(32, kernel_size=(5), activation='relu'))
+    model.add(MaxPooling1D(5))
+    
+    model.add(GlobalMaxPooling1D())
     model.add(Dense(1, activation='sigmoid'))
 
     model = model.compile(loss=keras.losses.binary_crossentropy,
-              optimizer='adam',#keras.optimizers.SGD(lr=0.01,decay=0.001, momentum=0.9, nesterov=True),
+              optimizer='rmsprop',
               metrics=['accuracy'])
 
     return model
