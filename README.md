@@ -34,4 +34,5 @@ Dans la WebApp:
 Infos:
 - Le back_end est exposé sur le port 8892 (code python)
 - Le front_end est exposé sur le port 8891
-- Pour les prédictions, un modèle pré-entrainé et stocké dans "back_end/Model", sera appelé.
+- Pour les prédictions, un modèle pré-entrainé et stocké dans "back_end/Model", sera appelé
+- Toutes les démarches, de PreProcessing et de validation du modèle, sont présentes dans le notebook suivant: /Notebook/Test_servier.ipynb
