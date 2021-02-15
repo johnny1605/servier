@@ -24,10 +24,10 @@ Dans un navigateur (Google chrome de préférence) coller sur l'adresse suivante
 
 Dans la WebApp: 
 - Cliquer sur « smiles »
-- Sélectioner le fichier « smile.csv », c’est un exemple présent dans le dossier cloné
+- Sélectioner le fichier « smile.csv », c’est un exemple présent dans le dossier cloné (le nom du fichier n'apparaitra pas dans le front)
 - Il prend comme input un ID et un smiles
 - Cliquer sur « submit »
-
+- Pour tester un nouveau « smiles », il faut modifer le nom dans le fichier « smiles.csv »
 
 
 
